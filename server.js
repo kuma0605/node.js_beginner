@@ -5,9 +5,9 @@ function start(route, handle){
 	function onRequest(request, response) {
 		
 		var pathName=url.parse(request.url).pathname;
-		route(handle, pathName)
+		var content=route(handle, pathName)
 		response.writeHead(200, {"Content-Type": "text/plain"});
-		response.write("Hello World");
+		response.write(content);
 		response.end();
 	}
 
