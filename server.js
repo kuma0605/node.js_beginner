@@ -8,9 +8,9 @@ function start(route, handle){
 
 		console.log("Request for "+pathName+ " received.");
 
-		request.setEncoding("utf8");
+		// request.setEncoding("utf8");
 
-		request.addListener("data",function(postDataChunk){
+		/* request.addListener("data",function(postDataChunk){
 			postData+=postDataChunk;
 			console.log("Received POST data chunk '"+ postDataChunk+"'.")
 		})
@@ -18,7 +18,9 @@ function start(route, handle){
 		request.addListener("end", function(){
 			console.log(postData)
 			route(handle, pathName, response, postData);
-		})
+		}) */
+
+		route(handle, pathName, response, request);
 	}
 
 	http.createServer(onRequest).listen(8888);
